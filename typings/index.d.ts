@@ -1,6 +1,17 @@
+import EventEmitter = require("events");
+
 export type AvatarType = "headshot" | "avatarBust" | "avatarThumbnail";
 
-export class Client {}
+export class Client extends EventEmitter {}
+
+export interface UserConstructor {
+  userId: number;
+  username: string;
+  displayName: string;
+  hasPremium: boolean;
+  banned: boolean;
+  description: string;
+}
 
 export class User {
   private _cookie: string | null;
