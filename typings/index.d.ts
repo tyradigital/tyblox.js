@@ -5,6 +5,7 @@ export type AvatarType = "headshot" | "avatarBust" | "avatarThumbnail";
 export class Client extends EventEmitter {}
 
 export interface UserConstructor {
+  _cookie?: string;
   userId: number;
   username: string;
   displayName: string;
