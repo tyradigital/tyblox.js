@@ -1,8 +1,8 @@
-import EventEmitter = require("events");
+// import EventEmitter = require("events");
 
 export type AvatarType = "headshot" | "avatarBust" | "avatarThumbnail";
 
-export class Client extends EventEmitter {}
+export class Client {}
 
 export interface UserConstructor {
   _cookie?: string;
