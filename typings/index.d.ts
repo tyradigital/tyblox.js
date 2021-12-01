@@ -28,6 +28,7 @@ export class User {
   public readonly hasPremium: boolean;
   public readonly banned: boolean;
   public readonly description: string;
+  public cookieValid(): boolean;
   public limitedAccess(): boolean;
   public avatarUrl(type: AvatarType): string;
   public previousNames(): string[] | null;
