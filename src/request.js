@@ -1,15 +1,16 @@
-const Axios = require("axios");
-const axios = Axios.default;
-const { RequestOptions } = require("../typings/index.d.ts");
+const axios = require('axios').default;
 
 /**
  * Do a `GET` request to an API, usually roblox.
- * @param {RequestOptions} [options] The request options.
+ * @param {import('../typings/index').RequestOptions} [options] The request options.
  * @returns {Promise}
  * @example
  * getUser.usingId('123456');
  */
 exports.get = async (options) => {
+  if (!options) throw new Error("OPTIONS REQUIRED")
+  if (!options.baseUrl) throw new Error("BASE URL REQUIRED")
+
   let finalUrl =
     options.baseUrl +
     (options.inUrlParam1 || "") +
@@ -17,12 +18,15 @@ exports.get = async (options) => {
     (options.inUrlParam2 || "");
 
   let finalHeaders = {};
-  if (options.cookie) finalHeaders.Cookie = options.cookie;
-  options.headers.forEach((header) => {
+  if (options.cookie) finalHeaders.Cookie = `.ROBLOSECURITY=${options.cookie};`;
+  if (options.headers) options.headers.forEach((header) => {
     finalHeaders[header.key] = header.value;
   });
 
-  axios.get(finalUrl, {
+  return await axios.get(finalUrl, {
+    withCredentials: true,
     headers: finalHeaders,
+  }).then((res) => {
+    return res.data;
   });
 };
