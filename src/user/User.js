@@ -1,5 +1,6 @@
 /**
  * The User Class for **`tyblox.js`** used for getting user details
+ * @type {import('../../typings/index').User}
  */
 class User {
   /**
@@ -79,12 +80,42 @@ class User {
   description;
 
   /**
-   * If the cookie (assuming given) for this roblox user class seems to be valid
-   * @type boolean
+   * Construct the User class
+   * @param {boolean} [limitedAccess] If the user has limited access to functions
+   * @param {import('../../typings/index').UserConstructor} [info] The Cookie of the account to log in with
+   */
+  constructor(limitedAccess, info) {
+    this._initLimited = limitedAccess;
+    
+    this._cookie = info._cookie;
+    this.userId = info.userId;
+    this.username = info.username;
+    this.displayName = info.displayName;
+    this.hasPremium = info.hasPremium;
+    this.banned = info.banned;
+    this.description = info.description;
+  }
+
+  /**
+   * @returns {void}
+   * @private 
+   */
+  _reloadAvatar() {
+
+  }
+
+  /**
+   * If the cookie (assuming given) for this roblox user class seems to be valid*
+   * 
+   * ***Note**: This is not a guarantee that the cookie is valid, it is a basic check to see if the cookie *seems* valid
+   * @returns {boolean}
    * @public
    */
   cookieValid() {
     if (!this._cookie) return false;
+    if (!this._cookie.toLowerCase().includes('_|WARNING:-DO-NOT-SHARE-THIS.')) {
+      console.error('No ROBLOX warning was found in the provided cookie. Ensure that you include the entire .ROBLOSECURITY warning!')
+    } else return true;
   }
 
   /**
@@ -104,6 +135,7 @@ class User {
    * @public
    */
   avatarUrl(avatarType) {
+    this._reloadAvatar();
     if (this._avatar && this._avatar[avatarType]) {
       return this._avatar[avatarType];
     } else return false;
