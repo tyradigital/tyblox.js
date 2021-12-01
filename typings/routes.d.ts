@@ -1,5 +1,5 @@
 export interface v1_users_mobileapi_userinfo {
-  UserId: string;
+  UserID: string;
   UserName: string;
   RobuxBalance: number;
   ThumbnailUrl: string;
