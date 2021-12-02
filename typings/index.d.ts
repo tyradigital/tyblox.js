@@ -1,6 +1,10 @@
 import EventEmitter = require("events");
 
-export type AvatarType = "headshot" | "avatarBust" | "avatarThumbnail";
+export enum AvatarType {
+  "avatarThumbnail" = "thumbnail",
+  "avatarHeadshot" = "headshot",
+  "avatarBust" = "bust",
+}
 
 export interface UserConstructor {
   _cookie?: string;
@@ -26,11 +30,11 @@ export class User {
   public readonly hasPremium: boolean;
   public readonly banned: boolean;
   public readonly description: string;
-  public reloadAvatar(): void;
+  public reloadAvatar(): Promise<void>;
   public cookieValid(): boolean;
   public limitedAccess(): boolean;
   public avatarUrl(type: AvatarType): string;
-  public getPreviousNames(): string[] | null;
+  public getPreviousNames(): Promise<string[] | null>;
   public changeUsername(newUsername: string): string;
   public changeDescription(newDescription: string): string;
 }
