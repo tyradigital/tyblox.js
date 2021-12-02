@@ -13,7 +13,30 @@ const routes = require("../routes");
  * tyblox.getUser.usingId('123456');
  * ```
  */
-exports.usingId = async () => {};
+exports.usingId = async (userId) => {
+
+  /**
+   * @type {import('../../typings/routes').v1_users_get_user_info_id | null}
+   */
+   let dataPublic = await request.get({
+    baseUrl: routes.v1.users.get_user_info_id,
+    inUrlParam1: userId
+  })
+
+  let newUser = new User(true, {
+    userId: dataPublic.id,
+    createdAt: dataPublic.created,
+    username: dataPublic.name,
+    displayName: dataPublic.displayName,
+    banned: dataPublic.isBanned,
+    description: dataPublic.description,
+  })
+
+  newUser.reloadAvatar()
+  newUser.getPreviousNames()
+
+  return newUser;
+};
 
 /**
  * Gets information for a user using its cookie - will most likely NOT have limited access
@@ -36,12 +59,28 @@ exports.usingCookie = async (cookie, forceLimited) => {
     baseUrl: routes.v1.users.mobileapi_userinfo,
     cookie: cookie
   });
+
+  /**
+   * @type {import('../../typings/routes').v1_users_get_user_info_id | null}
+   */
+  let partialDataPublic = await request.get({
+    baseUrl: routes.v1.users.get_user_info_id,
+    inUrlParam1: partialDataLoggedIn.UserID
+  })
   
   let newUser = new User(forceLimited, {
+    _cookie: cookie,
     userId: partialDataLoggedIn.UserID,
+    createdAt: partialDataPublic.created,
     username: partialDataLoggedIn.UserName,
+    displayName: partialDataPublic.displayName,
     hasPremium: partialDataLoggedIn.IsPremium,  
-  });
+    banned: partialDataPublic.isBanned,
+    description: partialDataPublic.description,
+  })
+
+  newUser.reloadAvatar()
+  newUser.getPreviousNames()
 
   return newUser;
 };
