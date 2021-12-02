@@ -3,7 +3,7 @@ const axios = require('axios').default;
 /**
  * Do a `GET` request to an API, usually roblox.
  * @param {import('../typings/index').RequestOptions} [options] The request options.
- * @returns {Promise}
+ * @returns {Promise<any>}
  * @example
  * getUser.usingId('123456');
  */
@@ -24,6 +24,7 @@ exports.get = async (options) => {
   });
 
   return await axios.get(finalUrl, {
+    method: "GET",
     withCredentials: true,
     headers: finalHeaders,
   }).then((res) => {
