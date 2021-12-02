@@ -114,8 +114,8 @@ class User {
    */
   cookieValid() {
     if (!this._cookie) return false;
-    if (!this._cookie.toLowerCase().includes('_|WARNING:-DO-NOT-SHARE-THIS.')) {
-      console.error('No ROBLOX warning was found in the provided cookie. Ensure that you include the entire .ROBLOSECURITY warning!')
+    if (!this._cookie.toUpperCase().includes('_|WARNING:-DO-NOT-SHARE-THIS.')) {
+      throw new Error('No ROBLOX warning was found in the provided cookie. Ensure that you include the entire .ROBLOSECURITY warning!')
     } else return true;
   }
 
