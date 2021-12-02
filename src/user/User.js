@@ -97,10 +97,11 @@ class User {
   }
 
   /**
+   * Reloads the Avatars currently in the User Class
    * @returns {void}
-   * @private 
+   * @public 
    */
-  _reloadAvatar() {
+  reloadAvatar() {
 
   }
 

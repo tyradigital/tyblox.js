@@ -26,6 +26,7 @@ export class User {
   public readonly hasPremium: boolean;
   public readonly banned: boolean;
   public readonly description: string;
+  public reloadAvatar(): void;
   public cookieValid(): boolean;
   public limitedAccess(): boolean;
   public avatarUrl(type: AvatarType): string;
