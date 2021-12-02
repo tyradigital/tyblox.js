@@ -19,6 +19,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
           cache: npm
 
+
       # Checks the perviously released version of dev branch
 #       - name: Check previous released version
 #         id: pre-release
@@ -31,6 +32,7 @@ jobs:
       - name: Install
         run: npm install
 
+
       # Deprecate old versions
 #       - name: Deprecate old versions
 #         if: steps.pre-release.outputs.release == 'true'
@@ -41,7 +43,7 @@ jobs:
       # Publishes Pkg to Dev Branch
       - name: Publish
         run: |
-          npm version --git-tag-version=false $(jq --raw-output '.version' package.json).$(date +%s).$(git rev-parse --short HEAD)
+          npm version --git-tag-version=false $(jq --raw-output '.version' package.json).$(git rev-parse --short HEAD)
           npm publish --tag dev || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
