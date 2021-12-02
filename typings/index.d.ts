@@ -1,8 +1,6 @@
-// import EventEmitter = require("events");
+import EventEmitter = require("events");
 
 export type AvatarType = "headshot" | "avatarBust" | "avatarThumbnail";
-
-export class Client {}
 
 export interface UserConstructor {
   _cookie?: string;
@@ -34,6 +32,11 @@ export class User {
   public previousNames(): string[] | null;
   public changeUsername(newUsername: string): string;
   public changeDescription(newDescription: string): string;
+}
+
+export class Client extends EventEmitter {
+  public readonly cookie: string | null;
+  public readonly user: User | null;
 }
 
 export interface Header {
