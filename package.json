@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "types": "./typings/index.d.ts",
   "scripts": {
-    "postinstall": "node postInstall.js"
+    "postinstall": "node postInstall.js",
+    "examples.login": "node examples/login.js"
   },
   "repository": {
     "type": "git",
@@ -35,5 +36,9 @@
     "eslint-plugin-import": "^2.25.3",
     "figlet": "^1.5.2",
     "typescript": "^4.5.2"
+  },
+  "engines": {
+    "node": ">=16.6.0",
+    "npm": ">=7.0.0"
   }
 }
