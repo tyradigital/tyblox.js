@@ -40,6 +40,14 @@ class User {
   userId;
 
   /**
+   * The date when the account was created
+   * @type Date
+   * @public
+   * @readonly
+   */
+  createdAt;
+
+  /**
    * The roblox user's roblox username
    * @type string
    * @public
@@ -142,7 +150,7 @@ class User {
     } else return false;
   }
 
-  previousNames() {}
+  getPreviousNames() {}
 
   changeUsername(newUsername) {}
 

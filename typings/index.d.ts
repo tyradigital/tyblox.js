@@ -30,7 +30,7 @@ export class User {
   public cookieValid(): boolean;
   public limitedAccess(): boolean;
   public avatarUrl(type: AvatarType): string;
-  public previousNames(): string[] | null;
+  public getPreviousNames(): string[] | null;
   public changeUsername(newUsername: string): string;
   public changeDescription(newDescription: string): string;
 }
