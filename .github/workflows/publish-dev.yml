@@ -34,11 +34,11 @@ jobs:
 
 
       # Deprecate old versions
-      #       - name: Deprecate old versions
-      #         if: steps.pre-release.outputs.release == 'true'
-      #         run: npm deprecate tyblox.js@"~$(jq --raw-output '.version' package.json)" "This version of tyblox.js is no longer supported, please upgrade to a later version." || true
-      #         env:
-      #           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+            - name: Deprecate old versions
+              if: steps.pre-release.outputs.release == 'true'
+              run: npm deprecate tyblox.js@"~$(jq --raw-output '.version' package.json)" "This version of tyblox.js is no longer supported, please upgrade to a later version." || true
+              env:
+                NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       # Publishes Pkg to Dev Branch
       - name: Publish
