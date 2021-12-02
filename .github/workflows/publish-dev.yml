@@ -20,28 +20,28 @@ jobs:
           cache: npm
 
       # Checks the perviously released version of dev branch
-#       - name: Check previous released version
-#         id: pre-release
-#         run: |
-#           if [[ $(npm view tyblox.js@dev version | grep -e "$(jq --raw-output '.version' package.json).*.$(git rev-parse --short HEAD | cut -b1-3)") ]]; \
-#           then echo '::set-output name=release::false'; \
-#           else echo '::set-output name=release::true'; fi
+      #       - name: Check previous released version
+      #         id: pre-release
+      #         run: |
+      #           if [[ $(npm view tyblox.js@dev version | grep -e "$(jq --raw-output '.version' package.json).*.$(git rev-parse --short HEAD | cut -b1-3)") ]]; \
+      #           then echo '::set-output name=release::false'; \
+      #           else echo '::set-output name=release::true'; fi
 
       # Runs npm install
       - name: Install
         run: npm install
 
       # Deprecate old versions
-#       - name: Deprecate old versions
-#         if: steps.pre-release.outputs.release == 'true'
-#         run: npm deprecate tyblox.js@"~$(jq --raw-output '.version' package.json)" "This version of tyblox.js is no longer supported, please upgrade to a later version." || true
-#         env:
-#           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+      #       - name: Deprecate old versions
+      #         if: steps.pre-release.outputs.release == 'true'
+      #         run: npm deprecate tyblox.js@"~$(jq --raw-output '.version' package.json)" "This version of tyblox.js is no longer supported, please upgrade to a later version." || true
+      #         env:
+      #           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       # Publishes Pkg to Dev Branch
       - name: Publish
         run: |
-          npm version --git-tag-version=false $(jq --raw-output '.version' package.json).$(date +%s).$(git rev-parse --short HEAD)
+          npm version --git-tag-version=false $(jq --raw-output '.version' package.json)-$(git rev-parse --short HEAD)
           npm publish --tag dev || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
