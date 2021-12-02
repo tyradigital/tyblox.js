@@ -28,7 +28,7 @@ Below is an example to login and access many features of tyblox.js
 
 ```js
 require("dotenv").config();
-const { Client } = require("../src/index");
+const { Client } = require("tyblox.js");
 
 const client = new Client();
 
