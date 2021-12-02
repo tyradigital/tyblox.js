@@ -2,9 +2,12 @@ const routes = {
   extentions: {
     v1: {
       users: {
-        username_history: "username-history",
-        can_manage: "canmanage",
+        username_history: "/username-history",
+        can_manage: "/canmanage",
       },
+      premium: {
+        validate_premium: "/validate-membership"
+      }
     },
   },
   v1: {
@@ -24,6 +27,9 @@ const routes = {
       ownership: "https://api.roblox.com/ownership/hasasset", // Checks if a user owns the specified asset. [Params: assetId, userId]
       user_can_manage: "https://api.roblox.com/users/", // Returns whether the user can manage a given asset. [params: assetId, userId]
     },
+    premium: {
+      validate_premium: "https://premiumfeatures.roblox.com/v1/users/"
+    }
   },
 };
 
