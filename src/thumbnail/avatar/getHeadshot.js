@@ -5,7 +5,7 @@ const routes = require("../../routes");
  * Gets the users avatar headshot
  * @param {string[] | number[]} [userIds] The User Ids to get the avatar urls.
  * @param {boolean} [circle] If the returned image should be a circle
- * @returns {Promise<string[]>}
+ * @returns {Promise<import('../../../typings/routes').v1_thumbnails_users_avatar[]>}
  * @example
  * ```js
  * const tyblox = require("tyblox.js")
