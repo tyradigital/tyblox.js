@@ -6,6 +6,12 @@ export enum AvatarType {
   "avatarBust" = "bust",
 }
 
+export interface AvatarObject {
+  avatarThumbnail: string | null;
+  avatarBust: string | null;
+  avatarHeadshot: string | null;
+}
+
 export interface UserConstructor {
   _cookie?: string;
   userId: number;
