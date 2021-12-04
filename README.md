@@ -1,6 +1,14 @@
-# **tyblox.js**
+<h1 align="center"> <strong> tyblox.js</strong> </h1>
 
-## **The most powerful ROBLOX API Wrapper**
+<h2 align="center"> <strong>The most powerful ROBLOX API Wrapper </strong></h2>
+<br />
+<div align="center">
+  <p>
+    <a href="https://www.npmjs.com/package/tyblox.js"><img src="https://img.shields.io/npm/v/tyblox.js.svg?maxAge=3600" alt="npm version" /></a>
+    <a href="https://www.npmjs.com/package/tyblox.js"><img src="https://img.shields.io/npm/dt/tyblox.js.svg?maxAge=3600" alt="npm downloads" /></a>
+    <a href="https://github.com/tyradigital/tyblox.js/actions"><img src="https://github.com/tyradigital/tyblox.js/workflows/Tests/badge.svg" alt="Tests status" /></a>
+  </p>
+</div>
 
 ---
 
