@@ -16,3 +16,19 @@ export interface v1_users_get_user_info_id {
   name: string;
   displayName: string;
 }
+
+export interface v1_users_username_history {
+  prevousPageCursor: null;
+  nextPageCursor: null;
+  data: Array<{ name: string }>;
+}
+
+export interface v1_thumbnails_users_avatar {
+  targetId: number;
+  state: string;
+  imageUrl: string;
+}
+
+export interface v1_thumbnails_user_avatars {
+  data: Array<v1_thumbnails_users_avatar>;
+}
