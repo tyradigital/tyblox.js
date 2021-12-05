@@ -48,6 +48,7 @@ export class User {
 export class Client extends EventEmitter {
   public readonly cookie: string | null;
   public readonly user: User | null;
+  public defaultGroup: number;
 }
 
 export interface Header {
@@ -62,4 +63,5 @@ export interface RequestOptions {
   inUrlParam2?: string;
   headers?: Header[];
   cookie?: string;
+  body?: any;
 }
