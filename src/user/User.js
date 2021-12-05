@@ -156,7 +156,7 @@ class User {
    * @public
    */
   avatarUrl(avatarType) {
-    this._reloadAvatar();
+    this.reloadAvatar();
     if (this._avatar && this._avatar[avatarType]) {
       return this._avatar[avatarType];
     } else return false;
