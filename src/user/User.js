@@ -1,3 +1,7 @@
+const request = require("../request");
+const routes = require("../routes")
+const avatarThumbnails = require("../thumbnail/avatar/index")
+
 /**
  * The User Class for **`tyblox.js`** used for getting user details
  * @type {import('../../typings/index').User}
@@ -26,7 +30,7 @@ class User {
 
   /**
    * The roblox user's roblox avatar url's
-   * @type {headshot: string | null, avatarBust: string | null, avatarThumbnail: string | null}
+   * @type {import('../../typings/index').AvatarObject}
    * @private
    */
   _avatar;
@@ -97,6 +101,7 @@ class User {
     
     this._cookie = info._cookie;
     this.userId = info.userId;
+    this.createdAt = info.createdAt;
     this.username = info.username;
     this.displayName = info.displayName;
     this.hasPremium = info.hasPremium;
@@ -106,11 +111,18 @@ class User {
 
   /**
    * Reloads the Avatars currently in the User Class
-   * @returns {void}
+   * @returns {Promise<void>}}
    * @public 
    */
-  reloadAvatar() {
+  async reloadAvatar() {
+    const avatarThumbnail = await avatarThumbnails.getAvatar([this.userId], false)
+    const avatarBust = await avatarThumbnails.getBust([this.userId], false)
+    const avatarHeadshot = await avatarThumbnails.getHeadshot([this.userId], false)
 
+    this._avatar = {}
+    this._avatar.thumbnail = avatarThumbnail[0].imageUrl
+    this._avatar.bust = avatarBust[0].imageUrl
+    this._avatar.headshot = avatarHeadshot[0].imageUrl
   }
 
   /**
@@ -150,7 +162,28 @@ class User {
     } else return false;
   }
 
-  getPreviousNames() {}
+  /**
+   * desc
+   * @returns {Promise<string[] | null>}
+   * @public
+   */
+  async getPreviousNames() {
+    /**
+    * @type {import('../../typings/routes').v1_users_username_history}
+    */
+    let names = await request.get({
+      baseUrl: routes.v1.users.get_user_info_id,
+      inUrlParam1: this.userId,
+      extendedUrl: routes.extentions.v1.users.username_history
+    })
+
+    this._previousNames = [];
+    names.data.forEach((prevName) => {
+      this._previousNames.push(prevName)
+    })
+
+    return this._previousNames;
+  }
 
   changeUsername(newUsername) {}
 
