@@ -179,7 +179,7 @@ class User {
 
     this._previousNames = [];
     names.data.forEach((prevName) => {
-      this._previousNames.push(prevName)
+      this._previousNames.push(prevName.name)
     })
 
     return this._previousNames;
