@@ -32,8 +32,8 @@ exports.usingId = async (userId) => {
     description: dataPublic.description,
   })
 
-  newUser.reloadAvatar()
-  newUser.getPreviousNames()
+  await newUser.reloadAvatar()
+  await newUser.getPreviousNames()
 
   return newUser;
 };
@@ -79,8 +79,8 @@ exports.usingCookie = async (cookie, forceLimited) => {
     description: partialDataPublic.description,
   })
 
-  newUser.reloadAvatar()
-  newUser.getPreviousNames()
+  await newUser.reloadAvatar()
+  await newUser.getPreviousNames()
 
   return newUser;
 };
