@@ -7,9 +7,9 @@ export enum AvatarType {
 }
 
 export interface AvatarObject {
-  avatarThumbnail: string | null;
-  avatarBust: string | null;
-  avatarHeadshot: string | null;
+  thumbnail: string | null;
+  bust: string | null;
+  headshot: string | null;
 }
 
 export interface UserConstructor {
