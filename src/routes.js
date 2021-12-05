@@ -29,6 +29,13 @@ const routes = {
     },
     premium: {
       validate_premium: "https://premiumfeatures.roblox.com/v1/users/"
+    },
+    thumbnails: {
+      user_avatars: {
+        thumbnail: "https://thumbnails.roblox.com/v1/users/avatar",
+        bust: "https://thumbnails.roblox.com/v1/users/avatar-bust",
+        headshot: "https://thumbnails.roblox.com/v1/users/avatar-headshot",
+      }
     }
   },
 };
