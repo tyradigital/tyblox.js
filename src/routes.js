@@ -45,6 +45,11 @@ const routes = {
       group: "https://groups.roblox.com/v1/groups/",
     }
   },
+  v2: {
+    auth: {
+      logout: "https://auth.roblox.com/v2/logout"
+    }
+  }
 };
 
 module.exports = routes;
