@@ -21,5 +21,5 @@ module.exports = async (userIds, circle) => {
         baseUrl: `${routes.v1.thumbnails.user_avatars.bust}?format=Png&size=420x420&isCircular=${circle}&userIds=${userIds.join(",")}`,
     })
 
-    return thumbnailData.data
+    return thumbnailData.data.data
 }
