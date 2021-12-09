@@ -7,6 +7,10 @@ const routes = {
       },
       premium: {
         validate_premium: "/validate-membership"
+      },
+      groups: {
+        users: "/users/",
+        rolesets: "/roles/"
       }
     },
   },
@@ -36,6 +40,9 @@ const routes = {
         bust: "https://thumbnails.roblox.com/v1/users/avatar-bust",
         headshot: "https://thumbnails.roblox.com/v1/users/avatar-headshot",
       }
+    },
+    groups: {
+      group: "https://groups.roblox.com/v1/groups/",
     }
   },
 };
