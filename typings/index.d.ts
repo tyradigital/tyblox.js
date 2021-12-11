@@ -47,6 +47,7 @@ export class User {
 
 export class Client extends EventEmitter {
   public readonly cookie: string | null;
+  public readonly token: string | null;
   public readonly user: User | null;
   public defaultGroup: number;
   public getToken(): void;
