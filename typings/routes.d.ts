@@ -1,6 +1,10 @@
+export interface headers {
+  [key: string]: string;
+}
+
 export interface response {
   status: string;
-  headers: any;
+  headers: headers;
 }
 
 export interface v1_users_mobileapi_userinfo extends response {
