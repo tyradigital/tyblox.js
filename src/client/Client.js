@@ -40,7 +40,7 @@ class Client extends EventEmitter {
      * @type {import('../../typings/routes').response}
      */
     let tokenReq = await request.post({
-      baseUrl: routes.v2.auth.logout,
+      url: `${routes.v2.bases.authApi()}${routes.v2.logout()}`,
       cookie: this.cookie,
       silenceErr: true
     })
