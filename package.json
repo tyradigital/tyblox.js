@@ -7,7 +7,8 @@
   "scripts": {
     "postinstall": "npm i --save-dev figlet chalk && node postInstall.js",
     "test": "npm run examples.login",
-    "examples.login": "node examples/login.js"
+    "examples.login": "node examples/login.js",
+    "examples.rank": "node examples/rank.js"
   },
   "repository": {
     "type": "git",
