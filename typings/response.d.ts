@@ -82,13 +82,11 @@ export interface v1_groups_info extends response {
 }
 
 export interface v1_groups_roleset {
-  data: {
-    id: string;
-    name: string;
-    rank: number;
-    memberCount: number;
-    description?: string;
-  };
+  id: string;
+  name: string;
+  rank: number;
+  memberCount: number;
+  description?: string;
 }
 
 export interface v1_groups_rolesets extends response {

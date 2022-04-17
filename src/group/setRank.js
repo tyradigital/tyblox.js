@@ -25,18 +25,21 @@ module.exports = async (client, userId, newRank, groupId) => {
     if (newRank > 255 || newRank < 1) throw new Error("INVALID NEW RANK")
     let rolesets = await getRolesets(groupId || client.defaultGroup)
 
-    let rolesetFound = rolesets.roles.find((roleset) => {
-        if (roleset.rank === newRank) return true;
+    let rolesetFound = rolesets.data.roles.find((roleset) => {
+        return (roleset.rank === newRank)
     })
     if (!rolesetFound) throw new Error("ROLE ID NOT FOUND FOR THIS GROUP")
+    console.log(parseInt(rolesetFound.id))
 
-    await request.patch({
+    const req = await request.patch({
         url: `${routes.v1.bases.groupsApi()}${routes.v1.groupMember(groupId || client.defaultGroup, userId)}`,
         cookie: client.cookie,
         token: client.token,
         silenceErr: true,
         body: {
-            roleId: newRank
+            roleId: parseInt(rolesetFound.id)
         }
     })
+
+    return req.data
 }

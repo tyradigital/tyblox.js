@@ -1,4 +1,6 @@
 import EventEmitter = require("events");
+import { body } from "./body";
+import { response } from "./response";
 
 export enum AvatarType {
   avatarThumbnail = "thumbnail",
@@ -100,11 +102,52 @@ export interface Header {
   value: string;
 }
 
-export interface RequestOptions {
+export interface RequestOptions<T extends body> {
   url: string;
   headers?: Header[];
   cookie?: string;
   token?: string;
-  body?: any;
+  body?: T;
   silenceErr: boolean;
+}
+
+export interface request {
+  /**
+   * Do a `GET` request to an API, usually roblox.
+   * @example
+   * request.get(...options);
+   *
+   * // or
+   *
+   * internal.reqest.get(...options);
+   */
+  get<T extends body, U extends response>(
+    options: RequestOptions<T>
+  ): Promise<U>;
+
+  /**
+   * Do a `POST` request to an API, usually roblox.
+   * @example
+   * request.post(...options);
+   *
+   * // or
+   *
+   * internal.request.post(...options);
+   */
+  post<T extends body, U extends response>(
+    options: RequestOptions<T>
+  ): Promise<U>;
+
+  /**
+   * Do a `PATCH` request to an API, usually roblox.
+   * @example
+   * request.patch(...options);
+   *
+   * // or
+   *
+   * internal.request.patch(...options);
+   */
+  patch<T extends body, U extends response>(
+    options: RequestOptions<T>
+  ): Promise<U>;
 }

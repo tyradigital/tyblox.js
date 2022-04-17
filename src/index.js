@@ -2,6 +2,9 @@
 
 // Internal
 exports.internal = {
+    /**
+     * @type {import('../typings/index').request}
+     */
     request: require("./request")
 }
 

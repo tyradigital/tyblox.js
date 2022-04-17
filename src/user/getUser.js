@@ -16,7 +16,7 @@ const routes = require("../routes");
 exports.usingId = async (userId) => {
 
   /**
-   * @type {import('../../typings/routes').v1_users_get_user_info_id | null}
+   * @type {import('../../typings/response').v1_users_get_user_info_id | null}
    */
    let dataPublic = await request.get({
     url: `${routes.global.bases.api}${routes.global.getUserInfoById(userId)}`
@@ -52,7 +52,7 @@ exports.usingId = async (userId) => {
 exports.usingCookie = async (cookie, forceLimited) => {
 
   /**
-   * @type {import('../../typings/routes').v1_users_mobileapi_userinfo | null}
+   * @type {import('../../typings/response').v1_users_mobileapi_userinfo | null}
    */
   let req1 = await request.get({
     url: `${routes.global.bases.mobileApi()}${routes.global.mobileUserInfo()}`,
@@ -61,7 +61,7 @@ exports.usingCookie = async (cookie, forceLimited) => {
   let partialDataLoggedIn = req1.data;
 
   /**
-   * @type {import('../../typings/routes').v1_users_get_user_info_id | null}
+   * @type {import('../../typings/response').v1_users_get_user_info_id | null}
    */
   let req2 = await request.get({
     url: `${routes.global.bases.api()}${routes.global.getUserInfoById(partialDataLoggedIn.UserID)}`

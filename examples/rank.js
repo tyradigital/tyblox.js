@@ -11,10 +11,11 @@ client.on("ready", async () => {
 
     client.defaultGroup = 13299030
 
-    const rank = await tyblox.getGroupRank(531761235, 3395411)
-    console.log(rank)
+    const getrank = await tyblox.getGroupRank(531761235, 3395411)
+    console.log(getrank)
 
-    await tyblox.setRank(client, 445177180, 2)
+    const setrank = await tyblox.setRank(client, 87516258, 2)
+    console.log(setrank)
 }) 
 
 client.login(process.env.example_cookie);
