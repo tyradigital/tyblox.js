@@ -13,7 +13,7 @@ const routes = require("../../routes");
  * tyblox.Avatar.getBust(['123456', 234567, ...], false);
  * ```
  */
-module.exports = async (userIds, circle) => {
+module.exports = async (userIds, circular) => {
     /** 
     * @type {import('../../../typings/routes').v1_thumbnails_user_avatars | null}
     */

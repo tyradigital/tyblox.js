@@ -108,5 +108,7 @@ export interface v2_groups_rank {
   };
 }
 export interface v2_groups_ranks extends response {
-  data: Array<v2_groups_rank>;
+  data: {
+    data: Array<v2_groups_rank>;
+  };
 }

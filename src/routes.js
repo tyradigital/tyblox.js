@@ -6,7 +6,14 @@ const routes = {
        * 
        * @returns {"https://api.roblox.com"}
        */
-       api: () => "https://api.roblox.com"
+       api: () => "https://api.roblox.com",
+
+       /**
+       * The Roblox Mobile API
+       * 
+       * @returns {"https://www.roblox.com/mobileapi"}
+       */
+      mobileApi: () => "https://www.roblox.com/mobileapi"
     },
 
     /**
@@ -45,17 +52,25 @@ const routes = {
      * @param {string} userId 
      * @returns {`/users/${userId}/groups/roles`}
      */
-     getUserRanks: (userId) => `/users/${userId}/groups/roles`
+     getUserRanks: (userId) => `/users/${userId}/groups/roles`,
+
+     /**
+       * Roblox User Info ID route
+       * 
+       * @param {string} userId 
+       * @returns {`/users/${userId}`}
+       */
+      getUserInfoById: (userId) => `/users/${userId}`,
+
+      /**
+       * The mobile userinfo route
+       * 
+       * @returns {"/userinfo"}
+       */
+      mobileUserInfo: () => "/userinfo"
   },
   v1: {
     bases: {
-      /**
-       * The Roblox Mobile API
-       * 
-       * @returns {"https://www.roblox.com/mobileapi"}
-       */
-      mobileApi: () => "https://www.roblox.com/mobileapi",
-
       /**
        * The Roblox Users API
        * 
@@ -103,6 +118,7 @@ const routes = {
     groupMember: (groupId, userId) => `/groups/${groupId}/users/${userId}`,
 
     /**
+     * Avatar Thumbnail route
      * 
      * @param {string[]} userIds 
      * @param {boolean} circular 
@@ -113,6 +129,7 @@ const routes = {
     userAvatarThumbnail: (userIds, circular, size = "720x720", format = "Png") => `/users/avatar?format=${format}&size=${size}&isCircular=${circular}&userIds=${userIds.join(",")}`,
 
     /**
+     * Avatar bust route
      * 
      * @param {string[]} userIds 
      * @param {boolean} circular 
@@ -123,6 +140,7 @@ const routes = {
      userAvatarBust: (userIds, circular, size = "420x420", format = "Png") => `/users/avatar-bust?format=${format}&size=${size}&isCircular=${circular}&userIds=${userIds.join(",")}`,
 
      /**
+     * Avatar headshot route
      * 
      * @param {string[]} userIds 
      * @param {boolean} circular 
@@ -130,7 +148,15 @@ const routes = {
      * @param {import('../typings/index').AvatarFormat} format 
      * @returns 
      */
-      userAvatarHeadshot: (userIds, circular, size = "720x720", format = "Png") => `/users/avatar-bust?format=${format}&size=${size}&isCircular=${circular}&userIds=${userIds.join(",")}`
+      userAvatarHeadshot: (userIds, circular, size = "720x720", format = "Png") => `/users/avatar-headshot?format=${format}&size=${size}&isCircular=${circular}&userIds=${userIds.join(",")}`,
+
+      /**
+       * Username history route
+       * 
+       * @param {string} userId 
+       * @returns {`/users/${userId}/username-history`}
+       */
+      usernameHistory: (userId) => `/users/${userId}/username-history`
   },
   v2: {
     bases: {

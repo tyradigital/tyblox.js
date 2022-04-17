@@ -3,7 +3,7 @@ const routes = require("../routes");
 
 /**
  * Get the groups roles in a list
- * @param {string | number} [groupId] The group id for the rolesets you want to get
+ * @param {string | number} groupId The group id for the rolesets you want to get
  * @returns {import('../../typings/routes').v1_groups_rolesets}
  * @example
  * ```js

@@ -3,7 +3,7 @@ const routes = require("../routes");
 
 /**
  * Get the users group ranks
- * @param {string | number} [userId] The user id you want to find the rank for
+ * @param {string | number} userId The user id you want to find the rank for
  * @returns {import('../../typings/routes').v2_groups_ranks}
  * @example
  * ```js
@@ -30,8 +30,8 @@ const routes = require("../routes");
 
 /**
  * Get the users rank in a group
- * @param {string | number} [userId] The user id you want to find the rank for
- * @param {string | number} [groupId] The group id for the rolesets you want to get
+ * @param {string | number} userId The user id you want to find the rank for
+ * @param {string | number} groupId The group id for the rolesets you want to get
  * @returns {number | null}
  * @example
  * ```js
@@ -56,8 +56,8 @@ exports.getGroupRank = async (userId, groupId) => {
     })
 
     if (!ranks.data || ranks.data.length === 0) return null;
-
-    const rankWithGroupIdFound = ranks.data.find((group) => group.group.id === groupId);
+    
+    const rankWithGroupIdFound = ranks.data.data.find((group) => group.group.id === groupId);
 
     if (rankWithGroupIdFound) return rankWithGroupIdFound.role.rank;
     return 0;

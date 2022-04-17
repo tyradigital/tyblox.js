@@ -4,16 +4,17 @@ const { Client } = require("../src/index");
 
 const client = new Client();
 
-client.on("ready", () => {
+client.on("ready", async () => {
     console.log("Ready!")
     
     console.log("Logged in as " + client.user.username)
 
     client.defaultGroup = 13299030
 
-    console.log(tyblox.getRank())
+    const rank = await tyblox.getGroupRank(531761235, 3395411)
+    console.log(rank)
 
-    tyblox.setRank(client, 445177180, 2)
+    await tyblox.setRank(client, 445177180, 2)
 }) 
 
 client.login(process.env.example_cookie);

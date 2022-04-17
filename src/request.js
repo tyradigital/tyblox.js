@@ -2,7 +2,7 @@ const axios = require('axios').default;
 
 /**
  * Do a `GET` request to an API, usually roblox.
- * @param {import('../typings/index').RequestOptions} [options] The request options.
+ * @param {import('../typings/index').RequestOptions} options The request options.
  * @returns {Promise<any>}
  * @example
  * request.get(...options);
@@ -41,7 +41,7 @@ exports.get = async (options) => {
 
 /**
  * Do a `POST` request to an API, usually roblox.
- * @param {import('../typings/index').RequestOptions} [options] The request options.
+ * @param {import('../typings/index').RequestOptions} options The request options.
  * @returns {Promise<any>}
  * @example
  * request.get(...options);
@@ -82,7 +82,7 @@ exports.get = async (options) => {
 
 /**
  * Do a `PATCH` request to an API, usually roblox.
- * @param {import('../typings/index').RequestOptions} [options] The request options.
+ * @param {import('../typings/index').RequestOptions} options The request options.
  * @returns {Promise<any>}
  * @example
  * request.get(...options);
@@ -97,8 +97,6 @@ exports.get = async (options) => {
   if (options.headers) options.headers.forEach((header) => {
     finalHeaders[header.key] = header.value;
   });
-
-  console.log(finalHeaders)
 
   if (options.silenceErr) {
     return await axios.patch(options.url, JSON.stringify(options.body) || {}, {
