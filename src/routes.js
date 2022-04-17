@@ -12,7 +12,7 @@ const routes = {
     /**
      * The asset versions route
      * 
-     * @param {string} [id] The specified asset ID
+     * @param {string} id The specified asset ID
      * @returns {`/assets/${id}/versions`}
      */
      getAssetVersion: (id) => `/assets/${id}/versions`,
@@ -91,7 +91,46 @@ const routes = {
      * @param {string} groupId 
      * @returns {`/groups/${groupId}/roles`}
      */
-    getRolesets: (groupId) => `/groups/${groupId}/roles`
+    getRolesets: (groupId) => `/groups/${groupId}/roles`,
+
+    /**
+     * The Group Member route
+     * 
+     * @param {string} groupId 
+     * @param {string} userId 
+     * @returns 
+     */
+    groupMember: (groupId, userId) => `/groups/${groupId}/users/${userId}`,
+
+    /**
+     * 
+     * @param {string[]} userIds 
+     * @param {boolean} circular 
+     * @param {import('../typings/index').ThumbnailAvatarSize} size 
+     * @param {import('../typings/index').AvatarFormat} format 
+     * @returns 
+     */
+    userAvatarThumbnail: (userIds, circular, size = "720x720", format = "Png") => `/users/avatar?format=${format}&size=${size}&isCircular=${circular}&userIds=${userIds.join(",")}`,
+
+    /**
+     * 
+     * @param {string[]} userIds 
+     * @param {boolean} circular 
+     * @param {import('../typings/index').BustAvatarSize} size 
+     * @param {import('../typings/index').AvatarFormat} format 
+     * @returns 
+     */
+     userAvatarBust: (userIds, circular, size = "420x420", format = "Png") => `/users/avatar-bust?format=${format}&size=${size}&isCircular=${circular}&userIds=${userIds.join(",")}`,
+
+     /**
+     * 
+     * @param {string[]} userIds 
+     * @param {boolean} circular 
+     * @param {import('../typings/index').HeadshotAvatarSize} size 
+     * @param {import('../typings/index').AvatarFormat} format 
+     * @returns 
+     */
+      userAvatarHeadshot: (userIds, circular, size = "720x720", format = "Png") => `/users/avatar-bust?format=${format}&size=${size}&isCircular=${circular}&userIds=${userIds.join(",")}`
   },
   v2: {
     bases: {
