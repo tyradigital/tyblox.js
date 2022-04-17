@@ -1,10 +1,51 @@
 import EventEmitter = require("events");
 
 export enum AvatarType {
-  "avatarThumbnail" = "thumbnail",
-  "avatarHeadshot" = "headshot",
-  "avatarBust" = "bust",
+  avatarThumbnail = "thumbnail",
+  avatarHeadshot = "headshot",
+  avatarBust = "bust",
 }
+
+export type ThumbnailAvatarSize =
+  | "30x30"
+  | "48x48"
+  | "60x60"
+  | "75x75"
+  | "100x100"
+  | "110x110"
+  | "140x140"
+  | "150x150"
+  | "180x180"
+  | "250x250"
+  | "352x352"
+  | "420x420"
+  | "720x720";
+
+export type BustAvatarSize =
+  | "48x48"
+  | "50x50"
+  | "60x60"
+  | "75x75"
+  | "100x100"
+  | "150x150"
+  | "180x180"
+  | "352x352"
+  | "420x420";
+
+export type HeadshotAvatarSize =
+  | "48x48"
+  | "50x50"
+  | "60x60"
+  | "75x75"
+  | "100x100"
+  | "110x110"
+  | "150x150"
+  | "180x180"
+  | "352x352"
+  | "420x420"
+  | "720x720";
+
+export type AvatarFormat = "Png" | "Jpeg";
 
 export interface AvatarObject {
   thumbnail: string | null;
