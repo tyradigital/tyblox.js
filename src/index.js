@@ -1,5 +1,10 @@
 'use strict'
 
+// Internal
+exports.internal = {
+    request: require("./request")
+}
+
 // Client/Base Classes (starting classes)
 exports.Client = require("./client/Client");
 
@@ -7,5 +12,11 @@ exports.Client = require("./client/Client");
 exports.User = require("./user/User");
 exports.getUser = require("./user/getUser");
 
-// Thumnails
+// Thumnail Classes
 exports.Avatar = require("./thumbnail/avatar/index")
+
+// Group Classes
+exports.getRolesets = require("./group/getRolesets")
+exports.getRanks = require("./group/getRanks").getRanks
+exports.getGroupRank = require("./group/getRanks").getGroupRank
+exports.setRank = require("./group/setRank")

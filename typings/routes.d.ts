@@ -38,7 +38,7 @@ export interface v1_users_username_history extends response {
   };
 }
 
-export interface v1_thumbnails_users_avatar extends response {
+export interface v1_thumbnails_users_avatar {
   data: {
     targetId: number;
     state: string;
@@ -81,7 +81,7 @@ export interface v1_groups_info extends response {
   };
 }
 
-export interface v1_groups_roleset extends response {
+export interface v1_groups_roleset {
   data: {
     id: string;
     name: string;
@@ -93,4 +93,20 @@ export interface v1_groups_roleset extends response {
 
 export interface v1_groups_rolesets extends response {
   data: { groupId: string; roles: Array<v1_groups_roleset> };
+}
+
+export interface v2_groups_rank {
+  group: {
+    id: number;
+    name: string;
+    memberCount: number;
+  };
+  role: {
+    id: number;
+    name: string;
+    rank: number;
+  };
+}
+export interface v2_groups_ranks extends response {
+  data: Array<v2_groups_rank>;
 }

@@ -60,10 +60,7 @@ export interface Header {
 }
 
 export interface RequestOptions {
-  baseUrl: string;
-  inUrlParam1?: string;
-  extendedUrl?: string;
-  inUrlParam2?: string;
+  url: string;
   headers?: Header[];
   cookie?: string;
   token?: string;
