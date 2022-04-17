@@ -113,7 +113,7 @@ const routes = {
      * 
      * @param {string} groupId 
      * @param {string} userId 
-     * @returns 
+     * @returns {`/groups/${groupId}/users/${userId}`}
      */
     groupMember: (groupId, userId) => `/groups/${groupId}/users/${userId}`,
 
@@ -124,7 +124,7 @@ const routes = {
      * @param {boolean} circular 
      * @param {import('../typings/index').ThumbnailAvatarSize} size 
      * @param {import('../typings/index').AvatarFormat} format 
-     * @returns 
+     * @returns {`/users/avatar?format=${format}&size=${size}&isCircular=${circular}&userIds=${userIds.join(",")}`}
      */
     userAvatarThumbnail: (userIds, circular, size = "720x720", format = "Png") => `/users/avatar?format=${format}&size=${size}&isCircular=${circular}&userIds=${userIds.join(",")}`,
 
@@ -135,7 +135,7 @@ const routes = {
      * @param {boolean} circular 
      * @param {import('../typings/index').BustAvatarSize} size 
      * @param {import('../typings/index').AvatarFormat} format 
-     * @returns 
+     * @returns {`/users/avatar-bust?format=${format}&size=${size}&isCircular=${circular}&userIds=${userIds.join(",")}`}
      */
      userAvatarBust: (userIds, circular, size = "420x420", format = "Png") => `/users/avatar-bust?format=${format}&size=${size}&isCircular=${circular}&userIds=${userIds.join(",")}`,
 
@@ -146,7 +146,7 @@ const routes = {
      * @param {boolean} circular 
      * @param {import('../typings/index').HeadshotAvatarSize} size 
      * @param {import('../typings/index').AvatarFormat} format 
-     * @returns 
+     * @returns  {`/users/avatar-headshot?format=${format}&size=${size}&isCircular=${circular}&userIds=${userIds.join(",")}`}
      */
       userAvatarHeadshot: (userIds, circular, size = "720x720", format = "Png") => `/users/avatar-headshot?format=${format}&size=${size}&isCircular=${circular}&userIds=${userIds.join(",")}`,
 
