@@ -4,7 +4,7 @@ const routes = require("../routes");
 /**
  * Get the users group ranks
  * @param {string | number} userId The user id you want to find the rank for
- * @returns {import('../../typings/routes').v2_groups_ranks}
+ * @returns {import('../../typings/response').v2_groups_ranks}
  * @example
  * ```js
  * const tyblox = require("tyblox.js")
@@ -19,7 +19,7 @@ const routes = require("../routes");
     if (!userId) throw new Error("MISSING GROUP ID")
 
     /** 
-    * @type {import('../../typings/routes').v2_groups_ranks | null}
+    * @type {import('../../typings/response').v2_groups_ranks | null}
     */
     let rolesets = await request.get({
         url: `${routes.v1.bases.groupsApi()}${routes.global.getUserRanks(userId)}`
@@ -48,7 +48,7 @@ exports.getGroupRank = async (userId, groupId) => {
     if (!groupId) throw new Error("MISSING GROUP ID")
 
     /** 
-    * @type {import('../../typings/routes').v2_groups_ranks | null}
+    * @type {import('../../typings/response').v2_groups_ranks | null}
     */
     let ranks = await request.get({
         url: `${routes.v1.bases.groupsApi()}${routes.global.getUserRanks(userId)}`,

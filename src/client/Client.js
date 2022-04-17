@@ -37,7 +37,7 @@ class Client extends EventEmitter {
     if (!cookie || !this.cookie) throw new Error("NO COOKIE PROVIDED OR FOUND");
 
     /**
-     * @type {import('../../typings/routes').response}
+     * @type {import('../../typings/response').response}
      */
     let tokenReq = await request.post({
       url: `${routes.v2.bases.authApi()}${routes.v2.logout()}`,

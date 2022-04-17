@@ -169,7 +169,7 @@ class User {
    */
   async getPreviousNames() {
     /**
-    * @type {import('../../typings/routes').v1_users_username_history}
+    * @type {import('../../typings/response').v1_users_username_history}
     */
     let names = await request.get({
       url: `${routes.v1.bases.usersApi()}${routes.v1.usernameHistory(this.userId)}`
