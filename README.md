@@ -26,6 +26,14 @@
 
 ```sh
 $ npm install tyblox.js
+
+$ yarn add tyblox.js
+```
+
+**or for development previews, which may be buggy**
+
+```sh
+$ npm install tyblox.js@dev
 ```
 
 ---

@@ -1,4 +1,6 @@
 const getUser = require("../user/getUser");
+const request = require("../request");
+const routes = require("../routes");
 const EventEmitter = require("events");
 
 /**
@@ -14,10 +16,37 @@ class Client extends EventEmitter {
   cookie = null;
 
   /**
+   * The Clients Validation TOken
+   * @type {string | null}
+   */
+  token = null;
+
+  /**
+   * The Clients default set group
+   * @type {number | null}
+   */
+  defaultGroup = null
+
+  /**
    * The Client's User
    * @type {import('../../typings/index').User | null}
    */
   user = null;
+
+  async getToken(cookie = this.cookie) {
+    if (!cookie || !this.cookie) throw new Error("NO COOKIE PROVIDED OR FOUND");
+
+    /**
+     * @type {import('../../typings/routes').response}
+     */
+    let tokenReq = await request.post({
+      url: `${routes.v2.bases.authApi()}${routes.v2.logout()}`,
+      cookie: this.cookie,
+      silenceErr: true
+    })
+
+    this.token = tokenReq.headers["x-csrf-token"]
+  }
   
   /**
    * Logs the client in, sets the cookie, and confirms that the cookie is valid
@@ -26,7 +55,7 @@ class Client extends EventEmitter {
    * @example
    * ```js
    * require("dotenv").config();
-   * const { Client } = require("../src/index");
+   * const { Client } = require("tyblox.js");
    *
    * const client = new Client();
    *
@@ -42,7 +71,9 @@ class Client extends EventEmitter {
   async login(cookie = this.cookie) {
     this.user = await getUser.usingCookie(cookie, false);
     this.user.cookieValid();
-    console.log(this.user)
+    this.cookie = this.user._cookie
+
+    this.getToken(this.cookie)
 
     this.emit("ready");
   }

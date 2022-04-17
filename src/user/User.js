@@ -1,5 +1,5 @@
 const request = require("../request");
-const routes = require("../routes")
+const routes = require("../routes");
 const avatarThumbnails = require("../thumbnail/avatar/index")
 
 /**
@@ -93,8 +93,8 @@ class User {
 
   /**
    * Construct the User class
-   * @param {boolean} [limitedAccess] If the user has limited access to functions
-   * @param {import('../../typings/index').UserConstructor} [info] The Cookie of the account to log in with
+   * @param {boolean} limitedAccess If the user has limited access to functions
+   * @param {import('../../typings/index').UserConstructor} info The Cookie of the account to log in with
    */
   constructor(limitedAccess, info) {
     this._initLimited = limitedAccess;
@@ -172,13 +172,11 @@ class User {
     * @type {import('../../typings/routes').v1_users_username_history}
     */
     let names = await request.get({
-      baseUrl: routes.v1.users.get_user_info_id,
-      inUrlParam1: this.userId,
-      extendedUrl: routes.extentions.v1.users.username_history
+      url: `${routes.v1.bases.usersApi()}${routes.v1.usernameHistory(this.userId)}`
     })
 
     this._previousNames = [];
-    names.data.forEach((prevName) => {
+    names.data.data.forEach((prevName) => {
       this._previousNames.push(prevName.name)
     })
 

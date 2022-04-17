@@ -4,7 +4,7 @@ const routes = require("../routes");
 
 /**
  * Gets information for a user using its user ID - will most likely have limited access (see {@link User.limitedAccess })
- * @param {string | number} [userId] The Cookie of the account to log in with
+ * @param {string | number} userId The Cookie of the account to log in with
  * @returns {Promise<User>}
  * @example
  * ```js
@@ -19,8 +19,7 @@ exports.usingId = async (userId) => {
    * @type {import('../../typings/routes').v1_users_get_user_info_id | null}
    */
    let dataPublic = await request.get({
-    baseUrl: routes.v1.users.get_user_info_id,
-    inUrlParam1: userId
+    url: `${routes.global.bases.api}${routes.global.getUserInfoById(userId)}`
   })
 
   let newUser = new User(true, {
@@ -40,8 +39,8 @@ exports.usingId = async (userId) => {
 
 /**
  * Gets information for a user using its cookie - will most likely NOT have limited access
- * @param {string} [cookie] The Cookie of the account to get information on
- * @param {boolean} [forceLimited] Make the account limited anyways
+ * @param {string} cookie The Cookie of the account to get information on
+ * @param {boolean} forceLimited Make the account limited anyways
  * @returns {Promise<User>}
  * @example
  * ```js
@@ -55,18 +54,19 @@ exports.usingCookie = async (cookie, forceLimited) => {
   /**
    * @type {import('../../typings/routes').v1_users_mobileapi_userinfo | null}
    */
-  let partialDataLoggedIn = await request.get({
-    baseUrl: routes.v1.users.mobileapi_userinfo,
+  let req1 = await request.get({
+    url: `${routes.global.bases.mobileApi()}${routes.global.mobileUserInfo()}`,
     cookie: cookie
   });
+  let partialDataLoggedIn = req1.data;
 
   /**
    * @type {import('../../typings/routes').v1_users_get_user_info_id | null}
    */
-  let partialDataPublic = await request.get({
-    baseUrl: routes.v1.users.get_user_info_id,
-    inUrlParam1: partialDataLoggedIn.UserID
+  let req2 = await request.get({
+    url: `${routes.global.bases.api()}${routes.global.getUserInfoById(partialDataLoggedIn.UserID)}`
   })
+  let partialDataPublic = req2.data;
   
   let newUser = new User(forceLimited, {
     _cookie: cookie,
