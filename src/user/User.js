@@ -178,7 +178,7 @@ class User {
     })
 
     this._previousNames = [];
-    names.data.forEach((prevName) => {
+    names.data.data.forEach((prevName) => {
       this._previousNames.push(prevName.name)
     })
 
