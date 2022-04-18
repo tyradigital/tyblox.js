@@ -1,7 +1,7 @@
 {
   "name": "tyblox.js",
-  "version": "0.2.0-alpha",
-  "description": "",
+  "version": "0.2.1-alpha",
+  "description": "The most powerful Node.js package which allows you to quickly, and easily interact with the Roblox API.",
   "main": "src/index.js",
   "types": "./typings/index.d.ts",
   "scripts": {
@@ -35,9 +35,8 @@
   "devDependencies": {
     "chalk": "^4.1.2",
     "dotenv": "^10.0.0",
-    "eslint-plugin-import": "^2.25.3",
     "figlet": "^1.5.2",
-    "typescript": "^4.5.2"
+    "typescript": "^4.6.3"
   },
   "engines": {
     "node": ">=16.6.0",

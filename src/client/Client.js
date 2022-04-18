@@ -75,7 +75,7 @@ class Client extends EventEmitter {
 
     this.getToken(this.cookie)
 
-    this.emit("ready");
+    this.emit("ready", this);
   }
 }
 

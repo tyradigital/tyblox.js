@@ -88,13 +88,37 @@ export class User {
   public changeDescription(newDescription: string): string;
 }
 
+export type Awaitable<T> = T | PromiseLike<T>;
+
+export interface RobloxClientEvents {
+  ready: [client: Client]
+}
+
 export class Client extends EventEmitter {
   public readonly cookie: string | null;
   public readonly token: string | null;
   public readonly user: User | null;
   public defaultGroup: number;
-  public getToken(): void;
-  public login(): string;
+
+  public on<K extends keyof RobloxClientEvents>(
+    event: K,
+    listener: (...args: RobloxClientEvents[K]) => Awaitable<void>,
+  ): this;
+
+  public once<K extends keyof RobloxClientEvents>(
+    event: K,
+    listener: (...args: RobloxClientEvents[K]) => Awaitable<void>,
+  ): this;
+
+  public emit<K extends keyof RobloxClientEvents>(event: K, ...args: RobloxClientEvents[K]): boolean;
+
+  public off<K extends keyof RobloxClientEvents>(
+    event: K,
+    listener: (...args: RobloxClientEvents[K]) => Awaitable<void>,
+  ): this;
+
+  public getToken(cookie?: string): string;
+  public login(cookie: string): Promise<boolean>;
 }
 
 export interface Header {
